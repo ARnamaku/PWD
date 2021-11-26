@@ -6,7 +6,7 @@
     <input type=submit value='Tambah User'>
     </form>
     <table>
-    <tr><th>No</th><th>Username</th><th>NamaLengkap</th><th>Email</th><th>Aksi</th
+    <tr><th>No</th><th>Username</th><th>NamaLengkap</th><th>Email</th><th>Telp</th><th>Aksi</th
     ></tr>
     ";
     
@@ -20,6 +20,7 @@
     echo "<tr><td>$no</td><td>$r[id_user]</td>
         <td>$r[nama_lengkap]</td>
         <td>$r[email]</td>
+        <td>$r[telp]</td>
         <td><a href='hapus_user.php?id=$r[id_user]'>Hapus</a></td>
         </tr>";
         $no++;

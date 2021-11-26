@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "koneksi.php";
+$email = $_POST['email'];
 $id_user = $_POST['id_user'];
 $pass=md5($_POST['paswd']);
 $sql="SELECT * FROM users WHERE id_user='$id_user' AND password='$pass'";
@@ -9,15 +10,17 @@ $login=mysqli_query($con,$sql);
 $ketemu=mysqli_num_rows($login);
 $r= mysqli_fetch_array($login);
 if ($ketemu > 0){
+$_SESSION['emailuser'] = $r['email'];
 $_SESSION['iduser'] = $r['id_user'];
 $_SESSION['passuser'] = $r['password'];
 echo"USER BERHASIL LOGIN<br>";
+echo "email =",$_SESSION['emailuser'],"<br>";
 echo "id user =",$_SESSION['iduser'],"<br>";
 echo "password=",$_SESSION['passuser'],"<br>";
 echo "<a href=tampil_user.php><b>AKSES DATA USER</b></a></center>";
 }
 else{
-echo "<center>Login gagal! username & password tidak benar<br>";
+echo "<center>Login gagal! email, username & password tidak benar<br>";
 echo "<a href=form_login.php><b>ULANGI LAGI</b></a></center>";
 }
 mysqli_close($con);
