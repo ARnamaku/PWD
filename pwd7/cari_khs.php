@@ -17,16 +17,20 @@
     <tr>
         <th>No</th>
         <th>NIM</th>
+        <th>NAMA</th>
         <th>Kode MK</th>
+        <th>Nama MK</th>
         <th>Nilai</th>
     </tr>
 <?php 
     if(isset($_GET['cari'])){
         $cari = $_GET['cari'];
-        $sql="select * from khs where nim = ' ".$cari." '";
+        $sql="select * from khs where nim like'%".$cari."%'";
     $tampil = mysqli_query($con,$sql);
     }else{
         $sql="select * from khs";
+        // $sql="select * from matakuliah";
+        // $sql="select * from mahasiswa";
         $tampil = mysqli_query($con,$sql);
     }
     $no = 1;
@@ -35,7 +39,9 @@
     <tr>
         <td><?php echo $no++; ?></td>
         <td><?php echo $r['nim']; ?></td>
+        <td><?php echo $r['nama']; ?></td>
         <td><?php echo $r['kodeMK']; ?></td>
+        <td><?php echo $r['namaMK']; ?></td>
         <td><?php echo $r['nilai']; ?></td>
     </tr>
     <?php } ?>
